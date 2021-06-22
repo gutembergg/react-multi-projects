@@ -4,7 +4,7 @@ export const Container = styled.div`
   margin-bottom: 30px;
 
   > h2 {
-    color: var(--textWhite);
+    color: var(--netflix-textWhite);
     margin-left: 30px;
   }
 `

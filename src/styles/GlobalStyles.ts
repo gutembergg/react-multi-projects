@@ -11,8 +11,8 @@ export const GlobalStyles = createGlobalStyle`
 }
 
 :root {
-    --primary: #111;
-    --textWhite: #fff;
+    --netflix-primary: #111;
+    --netflix-textWhite: #fff;
 }
   
 `

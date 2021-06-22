@@ -7,22 +7,31 @@ import { Container, SectionMovieList } from './styles'
 
 const Netflix: React.FC = () => {
   const [moviesList, setMoviesList] = useState<any[]>([])
-  const [featuredMovies, setFeaturesMovies] = useState(null)
+  const [featuredMovies, setFeaturesMovies] = useState<unknown | null>(null)
 
   useEffect(() => {
     const getMoviesData = async () => {
       const data = await TMBD.getHomeList()
       setMoviesList(data)
 
-      const originals = moviesList.filter(movie => movie.slug === 'originals')
-      console.log('originals: ', originals)
+      const originals = data.filter(movie => movie.slug === 'originals')
+      const ramdomMovie = Math.floor(
+        Math.random() * (originals[0].items.results.length - 1)
+      )
+      const chosemMovie = originals[0].items.results[ramdomMovie]
+
+      const mainMovie = await TMBD.getInfoMovies(chosemMovie.id, 'tv')
+
+      setFeaturesMovies(mainMovie)
+
+      console.log('originals: ', mainMovie)
     }
     getMoviesData()
   }, [])
 
   return (
     <Container>
-      {featuredMovies && <FeaturedMovies />}
+      {featuredMovies && <FeaturedMovies item={featuredMovies} />}
 
       <SectionMovieList>
         {moviesList.map((item, key) => (

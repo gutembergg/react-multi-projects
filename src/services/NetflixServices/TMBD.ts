@@ -29,7 +29,7 @@ export type Result = Pick<ResultsItemsMovies, 'original_title' | 'poster_path'>
 
 export interface ItemsMovies {
   page: number
-  results: Result[]
+  results: ResultsItemsMovies[]
   total_pages: number
   total_results: number
 }
@@ -41,7 +41,7 @@ export interface Movies {
 }
 
 export default {
-  getHomeList: async (): Promise<Movies[]> => {
+  getHomeList: async () => {
     return [
       {
         slug: 'originals',
@@ -100,5 +100,30 @@ export default {
         )
       }
     ]
+  },
+
+  getInfoMovies: async (movieId: string, type: string) => {
+    let info = {}
+
+    if (movieId) {
+      switch (type) {
+        case 'movie':
+          info = await basicFecth(
+            `/movie/${movieId}?language=pt-BR&api_key=${API_KEY}`
+          )
+          break
+        case 'tv':
+          info = await basicFecth(
+            `/tv/${movieId}?language=pt-BR&api_key=${API_KEY}`
+          )
+          break
+
+        default:
+          info = {}
+          break
+      }
+    }
+
+    return info
   }
 }
