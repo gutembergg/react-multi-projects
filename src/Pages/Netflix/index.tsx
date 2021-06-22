@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import TMBD, { Movies } from '../../services/NetflixServices/TMBD'
 import FeaturedMovies from './FeaturedMovies'
+import Header from './Header'
 import MoviesList from './MoviesList'
 
 import { Container, SectionMovieList } from './styles'
@@ -23,14 +24,13 @@ const Netflix: React.FC = () => {
       const mainMovie = await TMBD.getInfoMovies(chosemMovie.id, 'tv')
 
       setFeaturesMovies(mainMovie)
-
-      console.log('originals: ', mainMovie)
     }
     getMoviesData()
   }, [])
 
   return (
     <Container>
+      <Header />
       {featuredMovies && <FeaturedMovies item={featuredMovies} />}
 
       <SectionMovieList>

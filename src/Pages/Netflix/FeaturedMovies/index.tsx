@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
+
+import { MdPlayArrow, MdAdd } from 'react-icons/md'
 
 import {
   Container,
@@ -6,7 +8,8 @@ import {
   GradientVertical,
   FeaturesInfo,
   FeaturesDescription,
-  Buttons
+  Buttons,
+  Genres
 } from './styles'
 
 interface Props {
@@ -15,6 +18,14 @@ interface Props {
 
 const FeaturedMovies: React.FC<Props> = ({ item }) => {
   const date = new Date(item.first_air_date)
+
+  const genres = []
+
+  for (const i in item.genres) {
+    genres.push(item.genres[i].name)
+  }
+
+  console.log('genres: ', genres)
 
   return (
     <Container
@@ -39,9 +50,18 @@ const FeaturedMovies: React.FC<Props> = ({ item }) => {
 
           <FeaturesDescription>{item.overview}</FeaturesDescription>
 
-          <Buttons></Buttons>
+          <Buttons>
+            <button>
+              <MdPlayArrow />
+              <span>Regarder</span>
+            </button>
+            <button>
+              <MdAdd />
+              <span> Ma Liste</span>
+            </button>
+          </Buttons>
 
-          <span>Genre...</span>
+          <Genres>Genres: {genres.join(', ')}</Genres>
         </GradientVertical>
       </GradientBottom>
     </Container>

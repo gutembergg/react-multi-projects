@@ -4,4 +4,6 @@ export const Container = styled.div`
   background: var(--netflix-primary);
 `
 
-export const SectionMovieList = styled.div``
+export const SectionMovieList = styled.div`
+  margin-top: -100px;
+`
