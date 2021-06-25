@@ -6,6 +6,10 @@ export const Container = styled.div`
 
 export const SectionMovieList = styled.div`
   margin-top: -100px;
+
+  @media (max-width: 760px) {
+    height: 80vh;
+  }
 `
 
 export const Footer = styled.div`

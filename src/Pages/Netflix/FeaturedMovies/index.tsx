@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { MdPlayArrow, MdAdd } from 'react-icons/md'
 
@@ -25,7 +25,11 @@ const FeaturedMovies: React.FC<Props> = ({ item }) => {
     genres.push(item.genres[i].name)
   }
 
-  console.log('genres: ', genres)
+  let description = item.overview
+
+  if (description.length > 200) {
+    description = description.substr(0, 200) + '...'
+  }
 
   return (
     <Container
@@ -48,7 +52,7 @@ const FeaturedMovies: React.FC<Props> = ({ item }) => {
             </div>
           </FeaturesInfo>
 
-          <FeaturesDescription>{item.overview}</FeaturesDescription>
+          <FeaturesDescription>{description}</FeaturesDescription>
 
           <Buttons>
             <button>

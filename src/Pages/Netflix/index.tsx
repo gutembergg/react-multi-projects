@@ -11,12 +11,11 @@ const Netflix: React.FC = () => {
   const [moviesList, setMoviesList] = useState<any[]>([])
   const [featuredMovies, setFeaturesMovies] = useState<unknown | null>(null)
   const [headerBlack, setHeaderBlack] = useState(false)
-  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const getMoviesData = async () => {
       const data = await TMBD.getHomeList()
-      // setMoviesList(data)
+      setMoviesList(data)
 
       const originals = data.filter(movie => movie.slug === 'originals')
       const ramdomMovie = Math.floor(
@@ -26,7 +25,7 @@ const Netflix: React.FC = () => {
 
       const mainMovie = await TMBD.getInfoMovies(chosemMovie.id, 'tv')
 
-      // setFeaturesMovies(mainMovie)
+      setFeaturesMovies(mainMovie)
     }
     getMoviesData()
   }, [])

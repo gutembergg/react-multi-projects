@@ -27,6 +27,14 @@ export const GradientVertical = styled.div`
     font-size: 50px;
     font-weight: 700;
   }
+
+  @media (max-width: 760px) {
+    padding-left: 20px;
+    > h1 {
+      font-size: 35px;
+      font-weight: 700;
+    }
+  }
 `
 export const FeaturesInfo = styled.div`
   display: flex;
@@ -44,6 +52,10 @@ export const FeaturesInfo = styled.div`
       color: #46d369;
     }
   }
+
+  @media (max-width: 760px) {
+    font-size: 16px;
+  }
 `
 
 export const FeaturesDescription = styled.div`
@@ -52,6 +64,11 @@ export const FeaturesDescription = styled.div`
 
   font-size: 17px;
   color: #999;
+
+  @media (max-width: 760px) {
+    max-width: 100%;
+    margin-right: 30px;
+  }
 `
 
 export const Buttons = styled.div`
@@ -85,6 +102,17 @@ export const Buttons = styled.div`
     margin-left: 10px;
     background-color: #333;
     color: #fff;
+  }
+
+  @media (max-width: 760px) {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 70%;
+    > button + button {
+      margin-left: 0px;
+      margin-top: 10px;
+    }
   }
 `
 export const Genres = styled.div`
