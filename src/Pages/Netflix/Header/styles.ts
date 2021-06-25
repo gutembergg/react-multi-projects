@@ -1,13 +1,25 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Container = styled.div`
+interface Props {
+  black: boolean
+}
+
+export const Container = styled.div<Props>`
   position: fixed;
   width: 100%;
+  z-index: 999;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background: ${props =>
+    props.black
+      ? '#141414'
+      : css`
+          background: transparent;
+        `};
+  transition: all ease 0.4s;
 
   height: 70px;
 `
